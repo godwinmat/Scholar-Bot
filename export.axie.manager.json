@@ -1,0 +1,50 @@
+[
+    {
+        "managerShare": 50,
+        "eth": "ronin:7c5d434dc6f710d8ee44aabd0754f576c69a6d98",
+        "name": "Isaac",
+        "scholarPayoutAddress": "",
+        "investorPercentage": "",
+        "investorRonin": ""
+    },
+    {
+        "managerShare": 50,
+        "eth": "ronin:35e460eb90daf41f5e76aee3db9490c848a8c8ac",
+        "name": "Victor",
+        "scholarPayoutAddress": "",
+        "investorPercentage": "",
+        "investorRonin": ""
+    },
+    {
+        "managerShare": 50,
+        "eth": "ronin:3b80a612844d6ca760fad9643abba47bd66552b2",
+        "name": "Daniel",
+        "scholarPayoutAddress": "",
+        "investorPercentage": "",
+        "investorRonin": ""
+    },
+    {
+        "managerShare": 50,
+        "eth": "ronin:bf6a15eb763f19d23571ad0b0cbd9f6e2b4df3bd",
+        "name": "Rynosreyli",
+        "scholarPayoutAddress": "",
+        "investorPercentage": "",
+        "investorRonin": ""
+    },
+    {
+        "managerShare": 50,
+        "eth": "ronin:a597de4529bbc75d803b67c76dd4098626709ea7",
+        "name": "Matthew ",
+        "scholarPayoutAddress": "",
+        "investorPercentage": "",
+        "investorRonin": ""
+    },
+    {
+        "managerShare": 50,
+        "eth": "ronin:7c7eaa29ea2dcb06efc4eccbf225379de9b0db9c",
+        "name": "Elijoe",
+        "scholarPayoutAddress": "",
+        "investorPercentage": "",
+        "investorRonin": ""
+    }
+]

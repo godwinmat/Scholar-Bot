@@ -5,7 +5,6 @@ async function myslp(users, addresses, message, convertAddress, axieInfinityApi,
         );
 
         const { slp } = await axieInfinityApi(address);
-        console.log(slp);
         const embed = new MessageEmbed()
             .setColor("AQUA")
             .setTitle(`${message.author.username}'s SLP Count.`)

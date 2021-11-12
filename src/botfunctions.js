@@ -21,11 +21,29 @@ async function axieInfinityApi(address) {
 	};
 
 	try {
-		const response = await axios.request(options)
-		return response.data
+		const response = await axios.request(options);
+		return response.data;
 	} catch (error) {
 		console.error(error);
 	}
 }
 
-module.exports = { convertAddress, axieInfinityApi };
+async function slpPriceApi() {
+	// const data = await fetch(
+	// 	" "
+	// );
+	var axios = require("axios").default;
+		
+	var options = {
+		method: "GET",
+		url: "https://api.coingecko.com/api/v3/coins/smooth-love-potion?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false",
+	};
+	try {
+		const response = await axios.request(options);
+		return response.data;
+	} catch (error) {
+		console.error(error);
+	}
+}
+
+module.exports = { convertAddress, axieInfinityApi, slpPriceApi };

@@ -4,13 +4,19 @@ var axios = require("axios").default;
 
 const db = require("./firebase-config");
 
-const { convertAddress, axieInfinityApi } = require("./botfunctions");
+const {
+	convertAddress,
+	axieInfinityApi,
+	slpPriceApi,
+} = require("./botfunctions");
 const addronin = require("./commands/addronin");
 const deleteronin = require("./commands/deleteronin");
 const mystats = require("./commands/mystats");
 const myslp = require("./commands/myslp");
+const help = require("./commands/help");
 const mmrleaderboard = require("./commands/mmrleaderboard");
 const slpleaderboard = require("./commands/slpleaderboard");
+const slpprice = require("./commands/slpprice");
 
 const {
 	collection,
@@ -24,6 +30,8 @@ const { Client, Intents, MessageEmbed } = require("discord.js");
 
 const userCollectionRef = collection(db, "user details");
 const PREFIX = "?";
+const defaultCurrency = "usd";
+// const amount = 1
 
 const ids = {};
 let users = [];
@@ -37,7 +45,6 @@ const client = new Client({
 		Intents.FLAGS.DIRECT_MESSAGES,
 	],
 });
-
 client.on("ready", async () => {
 	console.log(`${client.user.tag} is online`);
 	const details = await getDocs(userCollectionRef);
@@ -142,6 +149,11 @@ client.on("messageCreate", async (message) => {
 				);
 				break;
 			case "help":
+				help();
+				break;
+			case "slpprice":
+				slpprice(message, MessageEmbed, defaultCurrency, args);
+				
 				break;
 			default:
 				break;

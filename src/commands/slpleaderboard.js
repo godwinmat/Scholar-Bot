@@ -1,5 +1,3 @@
-const list = require("./list");
-
 async function slpleaderboard(
 	roles,
 	MessageEmbed,
@@ -12,11 +10,12 @@ async function slpleaderboard(
 	if (roles.includes("Admin") | roles.includes("Moderator")) {
 		let fields = [];
 		const data = [];
+		const list = Object.values(addresses)
 		const embed = new MessageEmbed();
 		embed.setColor("DARK_VIVID_PINK");
 		embed.setTitle(`${message.guild.name}'s SLP Leaderboard`);
 		
-		const promises = Object.values(addresses).map((address) => {
+		const promises = list.map((address) => {
 			return axieInfinityApi(convertAddress(address));
 		});
 		const responses = await Promise.all(promises);

@@ -14,7 +14,7 @@ async function mmrleaderboard(roles, MessageEmbed, message, addresses, axieInfin
         const responses = await Promise.all(promises);
         
 		for (let index = 0; index < responses.length; index++) {
-			data.push([userObjs[list[index]], responses[index].leaderboard.elo]);
+			data.push([userObjs[Object.values(addresses)[index]], responses[index].leaderboard.elo]);
 		}
 
 		setTimeout(() => {

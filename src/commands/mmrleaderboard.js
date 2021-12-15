@@ -1,20 +1,19 @@
-const list = require("./list");
-
 async function mmrleaderboard(roles, MessageEmbed, message, addresses, axieInfinityApi, convertAddress, userObjs) {
     if (roles.includes("Admin") | roles.includes("Moderator")) {
         let fields = [];
         const data = [];
+		const list = Object.values(addresses)
         const embed = new MessageEmbed();
         embed.setColor("AQUA");
         embed.setTitle(`${message.guild.name}'s MMR Leaderboard`);
 
-        const promises = Object.values(addresses).map((address) => {
+        const promises = list.map((address) => {
 			return axieInfinityApi(convertAddress(address));
 		});
         const responses = await Promise.all(promises);
         
 		for (let index = 0; index < responses.length; index++) {
-			data.push([userObjs[Object.values(addresses)[index]], responses[index].leaderboard.elo]);
+			data.push([userObjs[list[index]], responses[index].leaderboard.elo]);
 		}
 
 		setTimeout(() => {

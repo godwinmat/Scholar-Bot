@@ -4,15 +4,16 @@ async function slpprice(message, MessageEmbed, defaultCurrency, args) {
 	const [currency, amount] = args;
 	const data = await slpPriceApi();
 	const price = data.market_data.current_price;
+	console.log(parseInt(amount))
 	if (currency) {
 		if (price[currency.toLowerCase()]) {
 			const embed = new MessageEmbed();
 			embed.setTitle("SLP Price");
 			embed.setDescription(
-				`SLP is ${
+				`${amount? amount : ""} SLP is ${
 					(price[currency.toLowerCase()] * (amount ? amount : 1)).toFixed(4)
 				} ${currency.toUpperCase()}`
-			);
+			); 
 			message.channel.send({ embeds: [embed] });
 		} else {
 			const embed = new MessageEmbed();

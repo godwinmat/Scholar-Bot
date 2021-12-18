@@ -20,6 +20,7 @@ async function slpleaderboard(
 				
 				const promises = list.map((address) => {
 					return axieInfinityApi(convertAddress(address));
+
 				});
 				const responses = await Promise.all(promises);
 				

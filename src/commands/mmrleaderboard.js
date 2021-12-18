@@ -1,8 +1,29 @@
-async function mmrleaderboard(roles, MessageEmbed, message, addresses, axieInfinityApi, convertAddress, userObjs, users) {
-	if (roles.includes("Manager") || message.author.id === "864924045693419562") {
-		const list = Object.values(addresses)
+async function mmrleaderboard(
+	roles,
+	MessageEmbed,
+	message,
+	addresses,
+	axieInfinityApi,
+	convertAddress,
+	userObjs,
+	users
+) {
+	if (
+		roles.includes("Manager") ||
+		message.author.id === "864924045693419562"
+	) {
+		const list = Object.values(addresses);
 		if (list.length !== 0) {
-            if (message.guild.me.permissionsIn(message.channel).has(['SEND_MESSAGES', 'READ_MESSAGE_HISTORY', 'EMBED_LINKS', 'VIEW_CHANNEL'])) {
+			if (
+				message.guild.me
+					.permissionsIn(message.channel)
+					.has([
+						"SEND_MESSAGES",
+						"READ_MESSAGE_HISTORY",
+						"EMBED_LINKS",
+						"VIEW_CHANNEL",
+					])
+			) {
 				let fields = [];
 				const data = [];
 				const embed = new MessageEmbed();
@@ -13,9 +34,12 @@ async function mmrleaderboard(roles, MessageEmbed, message, addresses, axieInfin
 					return axieInfinityApi(convertAddress(address));
 				});
 				const responses = await Promise.all(promises);
-				
+
 				for (let index = 0; index < responses.length; index++) {
-					data.push([userObjs[list[index]], responses[index].leaderboard.elo]);
+					data.push([
+						userObjs[list[index]],
+						responses[index].leaderboard.elo,
+					]);
 				}
 
 				setTimeout(() => {
@@ -34,10 +58,10 @@ async function mmrleaderboard(roles, MessageEmbed, message, addresses, axieInfin
 							}
 							embed.setFields(fields);
 							message.channel.send({ embeds: [embed] });
-							embed.setTitle("Some more leaderboard")
+							embed.setTitle("Some more leaderboard");
 							fields = [];
 						}
-						
+
 						if (index + 1 === data.length) {
 							if ((index + 1) % 25 !== 0) {
 								embed.setTimestamp();
@@ -49,20 +73,32 @@ async function mmrleaderboard(roles, MessageEmbed, message, addresses, axieInfin
 					});
 				}, 4000);
 			} else {
-				if (message.guild.me.permissionsIn(message.channel).has(['SEND_MESSAGES'])) {
-                    message.channel.send("I don't have the permissions i need to work in this channel.")
-                    message.channel.send("The permissions i need are: VIEW CHANNEL, SEND MESSAGES, READ MESSAGE HISTORY and EMBED LINKS.")
-                } else {
-                    console.log("I don't have the permissions i need to work in this channel.")
-                    console.log("The permissions i need are: VIEW CHANNEL, SEND MESSAGES, READ MESSAGE HISTORY and EMBED LINKS.")
-                }
+				if (
+					message.guild.me
+						.permissionsIn(message.channel)
+						.has(["SEND_MESSAGES"])
+				) {
+					message.channel.send(
+						"I don't have the permissions i need to work in this channel."
+					);
+					message.channel.send(
+						"The permissions i need are: VIEW CHANNEL, SEND MESSAGES, READ MESSAGE HISTORY and EMBED LINKS."
+					);
+				} else {
+					console.log(
+						"I don't have the permissions i need to work in this channel."
+					);
+					console.log(
+						"The permissions i need are: VIEW CHANNEL, SEND MESSAGES, READ MESSAGE HISTORY and EMBED LINKS."
+					);
+				}
 			}
 		} else {
-			message.reply("No Scholar has been added")
+			message.reply("No Scholar has been added");
 		}
-    } else {
-        message.reply("You don't have access to use this command.");
-    }
+	} else {
+		message.reply("You don't have access to use this command.");
+	}
 }
 
-module.exports = mmrleaderboard
+module.exports = mmrleaderboard;
